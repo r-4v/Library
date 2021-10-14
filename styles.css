@@ -1,0 +1,93 @@
+body{
+    
+    font-family: 'Noto Sans Display', sans-serif;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    
+}
+#book-form{
+    display:flex;
+    flex-direction: column;
+    row-gap: 35px;
+
+}
+.overlay{
+    background-color: rgba(0, 0, 0, 0.8);
+    height:100vh;
+    width:100vw;
+    z-index:1;
+    position: fixed;
+    top:0;
+    left:0;
+    display:none;
+}
+.modal{
+    display:none;
+    position: absolute;
+    top:5vh;
+    left:36vw;
+    width:360px;
+    padding:20px;
+    z-index: 2;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    border-radius:20px;
+    box-shadow: 8px 8px 5px rgba(255,255,255,0.2); 
+
+}
+#form-div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:30px auto;
+    font-size:30px;
+    padding:20px;
+}
+input{
+    padding:10px;
+    border-radius: 10px;
+    background-color: white;
+    color:#05386b;;
+    font-weight: bold;
+    font-size:20px;
+    border:2px solid #05386b;
+   
+}
+::placeholder{
+    color:black;
+    opacity: 0.4;
+    font-size: 20px;
+    
+}
+#submit,#reset{
+    align-self:center;
+    margin:auto;
+}
+button[type=submit],button[type="reset"]{
+    padding:20px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    width:120px;
+}
+button{
+    padding:15px;
+    border-radius: 8px;
+    font-size:20px;
+    font-weight: bolder;
+    background-color: black;
+    color:white; 
+}
+.top-pane{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.collection{
+    display:flex;
+    margin-top:100px;
+    padding:50px;
+    flex-direction: row;
+    column-gap: 100px;
+    row-gap:100px;
+    flex-wrap:wrap;
+}
