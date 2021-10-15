@@ -59,10 +59,6 @@ function populateStorage(){
 }
 function displayLocalStorage(){
  
-  /*localStorage.forEach((item)=>{
-    myLibrary.push(JSON.parse(item));
-    displayBook(JSON.parse(item));
-  })*/
     for(i=0;i<localStorage.length;i++){
       myLibrary.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
       displayBook(JSON.parse(localStorage.getItem(localStorage.key(i))));
@@ -108,20 +104,17 @@ function displayBook(book) {
   collection.append(bookDiv);
   bookReadStatus.addEventListener("click", changeStatus);
   bookRemove.addEventListener("click", removeBook);
-  //console.log(myLibrary);
-  //console.log(myLibrary[0]['bookName'])
+  
 }
 function changeStatus(e) {
   if (this.innerText === "Read") this.innerText = "Not read";
   else this.innerText = "Read";
 }
 function removeBook(e) {
-  //console.log(myLibrary['bookname'])
+ 
   let bookToRemove = e.target.parentNode.childNodes[0].innerText;
   myLibrary = myLibrary.filter((book) => book.bookName !== bookToRemove);
   console.log(myLibrary);
   localStorage.removeItem(`${bookToRemove}`);
-
-  //index = myLibrary['bookName'].indexOf(e.target.parentNode.childNodes[0].innerText);
   collection.removeChild(e.target.parentNode);
 }
