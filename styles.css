@@ -23,8 +23,9 @@ body{
 .modal{
     display:none;
     position: absolute;
-    top:5vh;
-    left:36vw;
+    top:20vh;
+    left:35vw;
+   
     width:360px;
     padding:20px;
     z-index: 2;
