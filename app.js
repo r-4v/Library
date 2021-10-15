@@ -1,10 +1,18 @@
 let myLibrary = [];
-
 let form = document.getElementById("book-form");
 let modal = document.querySelector(".modal");
 let overlay = document.querySelector(".overlay");
 let addBookBtn = document.querySelector("#add-book");
 let collection = document.querySelector(".collection");
+
+if(!localStorage.length){
+  populateStorage();
+  console.log(localStorage);
+}
+else{
+  displayLocalStorage();
+}
+
 addBookBtn.addEventListener("click", openModal);
 form.addEventListener("submit", delegateBookInfo);
 overlay.addEventListener("click", closeOverlay);
@@ -44,6 +52,24 @@ function checkIfBookExists(bookName) {
   return bookExists;
 }
 
+function populateStorage(){
+  myLibrary.forEach((book)=> {
+    localStorage.setItem(`${book.bookName}`,JSON.stringify(book));
+  })
+}
+function displayLocalStorage(){
+ 
+  /*localStorage.forEach((item)=>{
+    myLibrary.push(JSON.parse(item));
+    displayBook(JSON.parse(item));
+  })*/
+    for(i=0;i<localStorage.length;i++){
+      myLibrary.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+      displayBook(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    }
+
+}
+
 function Book(author, bookName, pages, hasRead) {
   this.author = author;
   this.bookName = bookName;
@@ -53,6 +79,7 @@ function Book(author, bookName, pages, hasRead) {
 function addBookToLibrary(author, bookName, pages, hasRead) {
   let book = new Book(author, bookName, pages, hasRead);
   myLibrary.push(book);
+  localStorage.setItem(`${bookName}`,JSON.stringify(book));
   displayBook(book);
 }
 function displayBook(book) {
@@ -93,6 +120,7 @@ function removeBook(e) {
   let bookToRemove = e.target.parentNode.childNodes[0].innerText;
   myLibrary = myLibrary.filter((book) => book.bookName !== bookToRemove);
   console.log(myLibrary);
+  localStorage.removeItem(`${bookToRemove}`);
 
   //index = myLibrary['bookName'].indexOf(e.target.parentNode.childNodes[0].innerText);
   collection.removeChild(e.target.parentNode);
