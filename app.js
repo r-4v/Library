@@ -66,11 +66,12 @@ function displayLocalStorage(){
 
 }
 
-function Book(author, bookName, pages, hasRead) {
+class Book {
+  constructor(author, bookName, pages, hasRead){
   this.author = author;
   this.bookName = bookName;
   this.pages = pages;
-  this.hasRead = hasRead;
+  this.hasRead = hasRead;}
 }
 function addBookToLibrary(author, bookName, pages, hasRead) {
   let book = new Book(author, bookName, pages, hasRead);
