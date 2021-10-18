@@ -94,7 +94,10 @@ function displayBook(book) {
   bookAuthor.innerText = `${book.author}`;
   bookPages.innerText = `${book.pages}`;
   if (book.hasRead === "true") bookReadStatus.innerText = "Read";
-  else bookReadStatus.innerText = "Not read";
+  else {
+    bookReadStatus.innerText = "Not read";
+    book.hasRead = "false";
+  }
   bookRemove.innerText = "Remove";
   bookDiv.append(bookTitle);
   bookDiv.append(bookAuthor);
@@ -107,8 +110,17 @@ function displayBook(book) {
   
 }
 function changeStatus(e) {
-  if (this.innerText === "Read") this.innerText = "Not read";
-  else this.innerText = "Read";
+  console.log(e.target.parentNode.childNodes);
+    let bookToUpdate = e.target.parentNode.childNodes[0].innerText;
+    myBook = myLibrary.filter((book) => book.bookName === bookToUpdate);
+  if (this.innerText === "Read"){
+    this.innerText = "Not read";
+    myBook[0].hasRead = "false";
+  }
+  else {this.innerText = "Read";
+        myBook[0].hasRead = "true";
+}
+localStorage.setItem(`${myBook[0].bookName}`,JSON.stringify(myBook[0]));
 }
 function removeBook(e) {
  
